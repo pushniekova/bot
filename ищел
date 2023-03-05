@@ -51,20 +51,19 @@ def start(update, context):
 # Функція для обробки команди /help
 def help(update, context):
     help_text = 'Для замовлення роботи виконайте наступні кроки:\n'
-    help_text += '1.
-Відкрийте діалог з ботом, натиснувши кнопку "Start"\n'
-help_text += '2. Виконайте команду /order\n'
-help_text += '3. Слідуйте інструкціям бота та введіть всі необхідні дані\n'
-help_text += '4. Очікуйте на відповідь від оператора замовлення\n\n'
-help_text += 'Якщо у вас виникли додаткові запитання або проблеми з ботом, виконайте команду /support'
-update.message.reply_text(help_text)
+    help_text += '1. Відкрийте діалог з ботом, натиснувши кнопку "Start"\n'
+    help_text += '2. Виконайте команду /order\n'
+    help_text += '3. Слідуйте інструкціям бота та введіть всі необхідні дані\n'
+    help_text += '4. Очікуйте на відповідь від оператора замовлення\n\n'
+    help_text += 'Якщо у вас виникли додаткові запитання або проблеми з ботом, виконайте команду /support'
+    update.message.reply_text(help_text)
 
 # Функція для обробки команди /support
 def support(update, context):
-support_text = 'Якщо у вас виникли проблеми з ботом або вам потрібна допомога, зверніться до нашої служби підтримки:\n'
-support_text += 'Телефон: +380123456789\n'
-support_text += 'Email: support@company.com\n'
-update.message.reply_text(support_text)
+    support_text = 'Якщо у вас виникли проблеми з ботом або вам потрібна допомога, зверніться до нашої служби підтримки:\n'
+    support_text += 'Телефон: +380123456789\n'
+    support_text += 'Email: support@company.com\n'
+    update.message.reply_text(support_text)
 
 # Функція для обробки команди /order
 def order(update, context):
@@ -78,42 +77,70 @@ update.message.reply_text(order_text)
 
 # Функція для обробки повідомлень користувачів
 def message_handler(update, context):
-text = update.message.text.lower()
-if text == '/help':
-help(update, context)
-elif text == '/support':
-support(update, context)
-elif text == '/order':
-order(update, context)
-else:
-unknown_text = 'Вибачте, я не розумію вашого запиту. Використайте команду /help для отримання додаткової інформації'
-update.message.reply_text(unknown_text)
+    text = update.message.text.lower()
+    if text == '/help':
+        help_command(update, context)
+    elif text == '/support':
+        support(update, context)
+    elif text == '/order':
+        order(update, context)
+    else:
+        unknown_text = 'Вибачте, я не розумію вашого запиту. Використайте команду /help для отримання додаткової інформації'
+        update.message.reply_text(unknown_text)
 
 # Функція для запуску бота
 def main():
-updater = Updater("TOKEN", use_context=True)
-dp = updater.dispatcher
-dp.add_handler(CommandHandler("start", start))
-dp.add_handler(MessageHandler(Filters.text, message_handler))
-updater.start_polling()
-updater.idle()
+    updater = Updater("6201719090:AAHVmrXtpwRTD31h2XZtvF29S8sVr2VTOj8", use_context=True)
+    dp = updater.dispatcher
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(MessageHandler(Filters.text, message_handler))
+    updater.start_polling()
+    updater.idle()
 
-if name == 'main':
-main()
-return
 # Функція для обробки команди /start
 def start(update, context):
-start_text = 'Вітаю! Я - бот для замовлення робіт. Для отримання довідки використовуйте команду /help.'
-# Відправляємо вітання користувачеві
-update.message.reply_text(start_text)
+    start_text = 'Вітаю! Я - бот для замовлення робіт. Для отримання довідки використовуйте команду /help.'
+    update.message.reply_text(start_text)
 
-if name == 'main':
-updater = Updater(TOKEN, use_context=True)
-# Додаємо обробники команд
-updater.dispatcher.add_handler(CommandHandler('help', help))
-updater.dispatcher.add_handler(CommandHandler('start', start))
-# Запускаємо бота
-updater.start_polling()
+# Функція для обробки команди /help
+def help_command(update, context):
+    help_text = 'Цей бот допоможе вам замовити роботу. Ви можете скористатись наступними командами:\n\n'
+    help_text += '1. Використовуйте команду /order для замовлення роботи.\n'
+    help_text += '2. Використовуйте команду /status, щоб перевірити статус виконання роботи.\n'
+    help_text += '3. Використовуйте команду /cancel, щоб скасувати замовлення роботи.\n'
+    help_text += '4. Використовуйте команду /feedback, щоб залишити відгук про роботу.\n'
+    help_text += '5. Якщо виникли будь-які проблеми, зверніться до адміністратора боту.\n\n'
+    help_text += 'Список доступних команд:\n'
+    help_text += '/start - почати роботу з ботом\n'
+    help_text += '/help - довідка та інструкці
+
+
+# Функція для запуску бота
+def main():
+    updater = Updater("6201719090:AAHVmrXtpwRTD31h2XZtvF29S8sVr2VTOj8", use_context=True)
+    dp = updater.dispatcher
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(MessageHandler(Filters.text, message_handler))
+    updater.start_polling()
+    updater.idle()
+
+    if __name__ == '__main__':
+        main()
+
+return
+
+if __name__ == '__main__':
+    TOKEN = '6201719090:AAHVmrXtpwRTD31h2XZtvF29S8sVr2VTOj8", use_context=True'
+    updater = Updater(TOKEN, use_context=True)
+
+    # Додаємо обробники команд
+    updater.dispatcher.add_handler(CommandHandler('help', help))
+    updater.dispatcher.add_handler(CommandHandler('start', start))
+
+    # Запускаємо бота
+    updater.start_polling()
+    updater.idle()
+
 
 # Зупиняємо бота при натисканні Ctrl + C
 updater.idle()
