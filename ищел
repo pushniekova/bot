@@ -6,7 +6,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                      level=logging.INFO)
 
 # Отримуємо токен бота від BotFather
-TOKEN = 'your_token_here'
+TOKEN = '6201719090:AAHVmrXtpwRTD31h2XZtvF29S8sVr2VTOj8'
 
 # Створюємо об'єкт Updater та передаємо йому токен
 updater = Updater(TOKEN, use_context=True)
